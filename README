@@ -1,0 +1,8 @@
+Quando se está jogando GuerraKhan, realizar um ataque efetivo é essencial saber que o jogador não esteja online. 
+Existe na plataforma do jogo duas páginas que exibem: 
+1. Página do Clan - lista os jogadores do clan e quem está online;
+2. Página do Perfil do Jogador - exibe o horário que o jogador esteve online;
+
+Na intenção de ajudar a monitorar os horários que os jogadores estão online penso em criar uma ferramenta para cadastrar os horários que os jogadores estiveram online. A idéia ainda está crua na minha cabeça, mas o objetivo é esse: Conhecermos o padrão de horários em que os jogadores entram.
+
+O desafio inicial tem sido acessar a página protegida por sessão (e imagino alguma outra proteção) através de objeto manipulável usando a biblioteca cURL.
