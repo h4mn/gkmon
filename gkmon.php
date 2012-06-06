@@ -6,13 +6,47 @@
  * @author h4mn
  */
 class gkmon {
+    private $gkmon_resource;
+    private $gkmon_url = "http://www.guerrakhan.com";
+    private $gkmon_conteudo;
     //put your code here
     public function __construct() {
         //verificação se a extensão curl está carregada
         if(!in_array("curl", get_loaded_extensions())){
             die("Extension curl unloaded.");
         }
-        setcookie("test");
+        $this->gkmon_resource = curl_init();
+    }
+    public function set($key) {
+        curl_setopt($this->gkmon_resource, CURLOPT_URL, $this->gkmon_url);
+        switch ($key) {
+            case 1:
+                curl_setopt($this->gkmon_resource, CURLOPT_HEADER, 1);
+                break;
+            default:
+                curl_setopt($this->gkmon_resource, CURLOPT_HEADER, 0);
+                curl_setopt($this->gkmon_resource, CURLOPT_FOLLOWLOCATION, true);
+        }
+    }
+    
+    public function roda($reter = false, $teste = false) {
+        if($reter){
+            curl_setopt($this->gkmon_resource, CURLOPT_RETURNTRANSFER, $reter);
+            $this->gkmon_conteudo = curl_exec($this->gkmon_resource);
+            if($teste){
+                preg_match_all('|Set-Cookie: (.*);|U', $this->gkmon_conteudo, $resultado);
+                $cookies = implode(';', $resultado[1]);
+                echo "<pre>";
+                print_r($cookies);
+                echo "</pre>";
+            }
+            return $this->gkmon_conteudo;
+        } else {
+            curl_exec($this->gkmon_resource);
+        }
+    }
+    public function fecha() {
+        curl_close($this->gkmon_resource);
     }
     
 }
