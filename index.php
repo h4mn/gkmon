@@ -17,15 +17,18 @@
     <body>
         <?php require_once('form.html'); ?>
         <hr>
-        <p>URI da pagina: <b><?php echo $url; ?></b></p>
+        <?php
+            if(!empty($url)) {
+                echo "<p>URI da página: <b>$url</b></p>";
+                $gkmon->seturl($url);
+                $gkmon->setopt();
+                $gkmon->roda();
+            }
+        ?>
         <!--
         <iframe src="<?php echo $url; ?>" width="640px" height="480px"></iframe>
         /-->
         <footer><!-- Area de testes -->
-            <?php 
-                $gkmon->set(1);
-                $gkmon->roda(true, true);
-            ?>
             <?php 
                 #echo phpinfo(); 
                 $gkmon->fecha()

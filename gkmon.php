@@ -7,7 +7,7 @@
  */
 class gkmon {
     private $gkmon_resource;
-    private $gkmon_url = "http://www.guerrakhan.com";
+    private $gkmon_url;
     private $gkmon_conteudo;
     //put your code here
     public function __construct() {
@@ -17,7 +17,12 @@ class gkmon {
         }
         $this->gkmon_resource = curl_init();
     }
-    public function set($key) {
+    
+    public function seturl($url = "http://www.guerrakhan.com") {
+        $this->gkmon_url = $url;
+    }
+    
+    public function setopt($key = 0) {
         curl_setopt($this->gkmon_resource, CURLOPT_URL, $this->gkmon_url);
         switch ($key) {
             case 1:
@@ -26,6 +31,8 @@ class gkmon {
             default:
                 curl_setopt($this->gkmon_resource, CURLOPT_HEADER, 0);
                 curl_setopt($this->gkmon_resource, CURLOPT_FOLLOWLOCATION, true);
+                curl_setopt($this->gkmon_resource, CURLOPT_COOKIESESSION, true);
+                curl_setopt($this->gkmon_resource, CURLOPT_COOKIE,"PHPSESSID=rhgd2eqcorvqbit592rq8f1uq3;valid_user=b9c5859ab2bc3424e9183abfec92dcaf;access=ca88b395a4116512eaf4aad0956cde71");
         }
     }
     
