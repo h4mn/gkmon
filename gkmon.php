@@ -32,7 +32,7 @@ class gkmon {
                 curl_setopt($this->gkmon_resource, CURLOPT_HEADER, 0);
                 curl_setopt($this->gkmon_resource, CURLOPT_FOLLOWLOCATION, true);
                 curl_setopt($this->gkmon_resource, CURLOPT_COOKIESESSION, true);
-                curl_setopt($this->gkmon_resource, CURLOPT_COOKIE,"PHPSESSID=rhgd2eqcorvqbit592rq8f1uq3;valid_user=b9c5859ab2bc3424e9183abfec92dcaf;access=ca88b395a4116512eaf4aad0956cde71");
+                curl_setopt($this->gkmon_resource, CURLOPT_COOKIE,"");
         }
     }
     
